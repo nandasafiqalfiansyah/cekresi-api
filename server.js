@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
   res.json(data);
 });
 
-app.get("cekresi/:courier/:receipt", async (req, res) => {
+app.get("/cekresi/:courier/:receipt", async (req, res) => {
   const { courier, receipt } = req.params;
   const baseURL = `https://api.binderbyte.com/v1/track?api_key=${api}`;
   try {
@@ -39,26 +39,29 @@ app.get("cekresi/:courier/:receipt", async (req, res) => {
   }
 });
 
-app.get("cekongkir/:courier/:origin/:destination/:weight", async (req, res) => {
-  const { origin, courier, destination, weight } = req.params;
-  const baseURL = `https://api.binderbyte.com/v1/cost?api_key=${api}`;
-  try {
-    const response = await axios.get(
-      baseURL +
-        "&courier=" +
-        courier +
-        "&origin=" +
-        origin +
-        "&destination=" +
-        destination +
-        "&weight=" +
-        weight
-    );
-    res.json(response.data);
-  } catch (err) {
-    res.json(err);
+app.get(
+  "/cekongkir/:courier/:origin/:destination/:weight",
+  async (req, res) => {
+    const { origin, courier, destination, weight } = req.params;
+    const baseURL = `https://api.binderbyte.com/v1/cost?api_key=${api}`;
+    try {
+      const response = await axios.get(
+        baseURL +
+          "&courier=" +
+          courier +
+          "&origin=" +
+          origin +
+          "&destination=" +
+          destination +
+          "&weight=" +
+          weight
+      );
+      res.json(response.data);
+    } catch (err) {
+      res.json(err);
+    }
   }
-});
+);
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
