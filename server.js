@@ -7,9 +7,11 @@ const api = process.env.API_KEY_URL;
 
 const app = express();
 app.use(cors());
+const date = new Date().toLocaleString("id-ID", {
+  timeZone: "Asia/Jakarta",
+});
 
 app.get("/", (req, res) => {
-  date = new Date();
   data = {
     date: date,
     anoucement: "Welcome to cek Api",
