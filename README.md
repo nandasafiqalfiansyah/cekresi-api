@@ -7,7 +7,7 @@ Welcome to cek Api, a RESTful API for package tracking and shipping information.
 ## Author
 
 - Name: Nanda Safiq Alfiansyah
-- Version: V0.2
+- Version: V1
 
 ## Endpoints
 
