@@ -14,9 +14,10 @@ const date = new Date().toLocaleString("id-ID", {
 app.get("/", (req, res) => {
   data = {
     date: date,
-    anoucement: "Welcome to cek Api",
+    anoucement:
+      "Welcome to cek Ogkir dan Resi dan courier Seluruh Indonesia Api",
     Author: "Nanda safiq alfiansyah",
-    version: "V0.2",
+    version: "V1",
     Url: {
       cekresi: "/cekresi/:courier/:receipt",
       cekongkir: "/cekongkir/:courier/:origin/:destination/:weight",
@@ -25,7 +26,7 @@ app.get("/", (req, res) => {
   res.json(data);
 });
 
-app.get("/cekresi/:courier/:receipt", async (req, res) => {
+app.get("/v1/cekresi/:courier/:receipt", async (req, res) => {
   const { courier, receipt } = req.params;
   const baseURL = `https://api.binderbyte.com/v1/track?api_key=${api}`;
   try {
@@ -39,7 +40,7 @@ app.get("/cekresi/:courier/:receipt", async (req, res) => {
 });
 
 app.get(
-  "/cekongkir/:courier/:origin/:destination/:weight",
+  "/v1/cekongkir/:courier/:origin/:destination/:weight",
   async (req, res) => {
     const { origin, courier, destination, weight } = req.params;
     const baseURL = `https://api.binderbyte.com/v1/cost?api_key=${api}`;
